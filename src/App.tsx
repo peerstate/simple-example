@@ -12,12 +12,26 @@ import { usePeerState } from "@peerstate/react";
 
 type StateTreeType = any;
 
+/**
+ * Authorization Filters
+ *
+ * 1. match a part of the state tree
+ * 2. check who is trying to access
+ * 3. return true if they are allowed
+ */
 const myAuthFilter = createAuthFilter<StateTreeType>({
   "/lastName": () => true,
   "/users/:userId": () => true,
   "/counter": () => true,
 });
 
+/**
+ * Encryption Filters
+ *
+ * 1. match a part of the state tree
+ * 2. return false if there is no need to encrypt
+ * 3. to encrypt return a list of user ID's that can see the information
+ */
 const myEncryptionFilter = createEncryptionFilter<StateTreeType>({
   "/lastName": () => ["2"],
   "/counter": () => ["2"],
@@ -40,6 +54,7 @@ export default function App() {
     keychain
   );
 
+  // connect peerstate to a distributed p2p database
   useEffect(() => {
     return gun
       .get("peerstate-example")
