@@ -1193,8 +1193,10 @@
     tslib "^1.11.1"
     webcrypto-core "^1.0.18"
 
-"@peerstate/core@../peerstate":
+"@peerstate/core@^0.0.1":
   version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@peerstate/core/-/core-0.0.1.tgz#b0241d477132b6f28e871937456df0add1645930"
+  integrity sha512-m2aKmioUkvf99WOaYVsYkhtpkNfGY90KBQxdJVF4+qJcpT02VcgcNUBsXaPQIMDJn15BBkhsgoz4wc95gDku7w==
   dependencies:
     browserify-aes "^1.2.0"
     fast-json-patch "^3.0.0-1"
@@ -1202,9 +1204,6 @@
     keypair "^1.0.1"
     path-to-regexp "^6.1.0"
     uuid "^7.0.3"
-
-"@peerstate/react@../react-peerstate":
-  version "0.0.1"
 
 "@sheerun/mutationobserver-shim@^0.3.2":
   version "0.3.3"
