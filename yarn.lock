@@ -1205,6 +1205,11 @@
     path-to-regexp "^6.1.0"
     uuid "^7.0.3"
 
+"@peerstate/react@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@peerstate/react/-/react-0.0.1.tgz#7bcfba8de56026fdcccfe9db1fcfb448efb20558"
+  integrity sha512-vthNQM38Stvam9CYVAfpW5udVaok71nYm4GB4odXdxZOooO9Pr/e3ak97evaCMmnGp9J/A1Mycfuy6GdDlslLg==
+
 "@sheerun/mutationobserver-shim@^0.3.2":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.3.tgz#5405ee8e444ed212db44e79351f0c70a582aae25"

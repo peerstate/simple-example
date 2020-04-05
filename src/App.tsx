@@ -1,22 +1,15 @@
-import React, { useEffect, useReducer, Reducer } from "react";
+import React, { useEffect } from "react";
 import Gun from "gun/gun";
 
 import {
   createAuthFilter,
   createEncryptionFilter,
   createKeychain,
-  createPeerState,
   Action,
-  Keychain,
 } from "@peerstate/core";
 
-// TODO: use @peerstate/react instead of DIY
-// import { usePeerState } from "@peerstate/react";
+import { usePeerState } from "@peerstate/react";
 
-type InternalState<T> = {
-  peerState: T;
-  keys: Keychain;
-};
 type StateTreeType = any;
 
 const myAuthFilter = createAuthFilter<StateTreeType>({
@@ -40,25 +33,12 @@ let userId: string = keychain.getUserInfo().id;
 const gun = Gun(["https://gun-matrix.herokuapp.com/gun"]);
 
 export default function App() {
-  const { nextState, sign: signWithState } = createPeerState(
+  const { state, dispatch, sign } = usePeerState<StateTreeType>(
+    {},
     myAuthFilter,
     myEncryptionFilter,
     keychain
   );
-  const [internalState, dispatch] = useReducer<
-    Reducer<InternalState<StateTreeType>, Action>
-  >(nextState, {
-    peerState: {},
-    keys: keychain,
-  });
-  const state = internalState.peerState;
-  const sign = signWithState.bind(null, state);
-  // const { state, dispatch, sign } = usePeerState<StateTreeType>(
-  //   {},
-  //   myAuthFilter,
-  //   myEncryptionFilter,
-  //   keychain
-  // );
 
   useEffect(() => {
     return gun
