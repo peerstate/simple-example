@@ -37,13 +37,12 @@ const myEncryptionFilter = createEncryptionFilter<StateTreeType>({
   "/counter": () => ["2"],
 });
 
-// TODO: put this URL in the right place
-const SERVER_URL = "https://100.115.92.201:4000";
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || "https://localhost:4000";
 const keychain = createKeychain(SERVER_URL);
 
 let userId: string = keychain.getUserInfo().id;
 
-// TODO: put this URL in the right place
+// you will probably want to use your own p2p relay
 const gun = Gun(["https://gun-matrix.herokuapp.com/gun"]);
 
 export default function App() {
@@ -121,7 +120,6 @@ export default function App() {
       >
         rotate keys
       </button>
-      {/* <Messenger /> */}
     </div>
   );
 }
